@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace CRC
 {
@@ -9,20 +10,60 @@ namespace CRC
     {
         static void Main(string[] args)
         {
-
             Crc32 crc32 = new Crc32();
             String hash = String.Empty;
 
-            using (FileStream fs = File.Open("c:\\1.txt", FileMode.Open))
+            Console.Write("Enter Path: ");
+            string path = Console.ReadLine();
+
+            var dir = new DirectoryInfo(path);
+            var files = new List<string>();
+            var CRC = new List<string>();
+            foreach (FileInfo file in dir.GetFiles()) 
+            {                  
+                using (FileStream fs = File.Open(file.FullName, FileMode.Open))
                 foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
 
-            Console.WriteLine("CRC-32 is {0}", hash);
+                files.Add(file.FullName); 
+                CRC.Add(file.FullName + " - " + hash);
+            }
+
+            foreach (var element in CRC)
+            { 
+                Console.WriteLine(element);
+            }
+
+            path = path + "/CRC.txt";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            using (FileStream file = File.Create(path))
+            {
+                Byte[] info = new UTF8Encoding(true).GetBytes("");                 
+                file.Write(info, 0, info.Length);
+            }
+
+            using (System.IO.StreamWriter file_dump =
+            new System.IO.StreamWriter(@path, true))
+            {
+                foreach (var element in CRC)
+                {
+                    file_dump.WriteLine(element);
+                }
+
+                file_dump.WriteLine();
+            }
+
+            Console.WriteLine(" \t \t  Dump Done");
+                      
+            //Комменты у меня (с) Константин Лебейко
 
             Console.ReadKey();
         }
-
-
-
+        
         public sealed class Crc32 : HashAlgorithm
         {
             public const UInt32 DefaultPolynomial = 0xedb88320u;

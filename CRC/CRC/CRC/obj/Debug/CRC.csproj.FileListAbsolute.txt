@@ -4,3 +4,9 @@ E:\GitHub\CRC\CRC\CRC\bin\Debug\CRC.exe
 E:\GitHub\CRC\CRC\CRC\bin\Debug\CRC.pdb
 E:\GitHub\CRC\CRC\CRC\obj\Debug\CRC.exe
 E:\GitHub\CRC\CRC\CRC\obj\Debug\CRC.pdb
+E:\GitRepos\CRC\CRC\CRC\CRC\bin\Debug\CRC.exe.config
+E:\GitRepos\CRC\CRC\CRC\CRC\obj\Debug\CRC.exe
+E:\GitRepos\CRC\CRC\CRC\CRC\obj\Debug\CRC.pdb
+E:\GitRepos\CRC\CRC\CRC\CRC\bin\Debug\CRC.exe
+E:\GitRepos\CRC\CRC\CRC\CRC\bin\Debug\CRC.pdb
+E:\GitRepos\CRC\CRC\CRC\CRC\obj\Debug\CRC.csprojResolveAssemblyReference.cache
